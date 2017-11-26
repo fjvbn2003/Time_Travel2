@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "817151186747",
+    "firebase_url": "https://timetravle-a09df.firebaseio.com",
+    "project_id": "timetravle-a09df",
+    "storage_bucket": "timetravle-a09df.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:817151186747:android:f7ac1945b18c8d21",
+        "android_client_info": {
+          "package_name": "tabbedactivitytest.mobilesw.kau.time_travel2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "817151186747-q87j3h0kerhnhabs1qeevrhtthn2nvia.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "tabbedactivitytest.mobilesw.kau.time_travel2",
+            "certificate_hash": "a1435c42f63a60d708c490c45bb655257ea4d060"
+          }
+        },
+        {
+          "client_id": "817151186747-r7n7egjeul4avgvc615hbd0dhf4k78vt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSgIF2g8U-2e0gy-Zvhhv6i5bbk5Qo35o"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "817151186747-r7n7egjeul4avgvc615hbd0dhf4k78vt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
