@@ -51,7 +51,7 @@
         app:layout_constraintTop_toBottomOf="@+id/postTitleAdd" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/postLocationAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -82,7 +82,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/postLocationAdd" />
 
 
 </android.support.constraint.ConstraintLayout>
