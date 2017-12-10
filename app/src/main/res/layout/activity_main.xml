@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="tabbedactivitytest.mobilesw.kau.time_travel2.Activities.MainActivity">
+    tools:context="tabbedactivitytest.mobilesw.kau.time_travel2.MainActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout2"

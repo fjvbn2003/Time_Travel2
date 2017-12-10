@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="tabbedactivitytest.mobilesw.kau.time_travel2.Activities.TabbedActivity">
+    tools:context="tabbedactivitytest.mobilesw.kau.time_travel2.TabbedActivity">
     <item
         android:id="@+id/action_signOut"
         android:orderInCategory="100"
