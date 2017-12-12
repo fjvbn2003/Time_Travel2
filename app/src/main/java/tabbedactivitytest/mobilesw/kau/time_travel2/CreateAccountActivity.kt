@@ -15,6 +15,8 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import com.theartofdev.edmodo.cropper.CropImage
+import com.theartofdev.edmodo.cropper.CropImageView
 
 class CreateAccountActivity : AppCompatActivity() {
 
@@ -24,7 +26,7 @@ class CreateAccountActivity : AppCompatActivity() {
     lateinit var passwordField: EditText
     lateinit var mDatabaseReference: DatabaseReference
     lateinit var mDatabase: FirebaseDatabase
-    lateinit var mPostImage: ImageButton
+    lateinit var mProfileImage: ImageButton
     lateinit var mImageUri: Uri
     lateinit var mStorage : StorageReference
     val GALLERY_CODE:Int = 1
@@ -38,7 +40,7 @@ class CreateAccountActivity : AppCompatActivity() {
         mDatabaseReference = mDatabase.reference.child("MUser")
         mDatabaseReference.keepSynced(true)
         mStorage = FirebaseStorage.getInstance().reference
-        mPostImage = findViewById(R.id.imageButton_Create)
+        mProfileImage = findViewById(R.id.imageButton_Create)
         emailField = findViewById(R.id.Email_create)
         passwordField = findViewById(R.id.password_create)
         registerButoon = findViewById(R.id.button_create)
@@ -81,7 +83,7 @@ class CreateAccountActivity : AppCompatActivity() {
             }
 
         }
-        mPostImage.setOnClickListener {
+        mProfileImage.setOnClickListener {
             val galleryIntent = Intent(Intent.ACTION_GET_CONTENT)
             galleryIntent.setType("image/*")
             startActivityForResult(galleryIntent,GALLERY_CODE)
@@ -94,7 +96,21 @@ class CreateAccountActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if(requestCode == GALLERY_CODE && resultCode == Activity.RESULT_OK && data != null){
             mImageUri = data.data
-            mPostImage.setImageURI(mImageUri)
+            CropImage.activity(mImageUri)
+                    .setAspectRatio(1,1)
+                    .setGuidelines(CropImageView.Guidelines.ON)
+                    .setRequestedSize(400,400,CropImageView.RequestSizeOptions.RESIZE_EXACT)
+                    .start(this)
+        }
+        if(requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE){
+            val result = CropImage.getActivityResult(data)
+            if(resultCode == Activity.RESULT_OK){
+                val resultUri = result.uri
+                mProfileImage.setImageURI(resultUri)
+            }
+            else if(resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE){
+                val error = result.error
+            }
         }
     }
 
