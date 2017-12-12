@@ -59,24 +59,10 @@ class MainActivity : AppCompatActivity() {
                     }
         }
         //회원가입 이벤트
-        registerButoon.setOnClickListener {
-            mAuth.createUserWithEmailAndPassword(emailField.text.toString(), passwordField.text.toString())
-                    .addOnCompleteListener(this) { task ->
-                        if (task.isSuccessful) {
-                            // Sign in success, update UI with the signed-in user's information
-                            mUser = mAuth.currentUser
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.i( "Register failure", task.exception.toString())
-                            Toast.makeText(this,"회원가입 실패",Toast.LENGTH_LONG).show()
-
-                        }
-
-                        // ...
-                    }
+        registerButoon.setOnClickListener{
+            val intent = Intent(this, CreateAccountActivity::class.java)
+            startActivity(intent)
         }
-
-
 
 
     }
