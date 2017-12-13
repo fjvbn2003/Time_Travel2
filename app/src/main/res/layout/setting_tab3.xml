@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <LinearLayout
+        android:id="@+id/list_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <ListView
             android:id="@+id/list_view_setting"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         </ListView>
 
-
-
     </LinearLayout>
 
+    <include
+        layout="@layout/setting_menu4"
+        android:id="@+id/sub4"/>
 
 </android.support.constraint.ConstraintLayout>
