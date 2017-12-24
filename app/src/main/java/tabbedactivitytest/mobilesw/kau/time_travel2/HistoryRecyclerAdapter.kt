@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import com.github.vipulasri.timelineview.TimelineView
 import com.squareup.picasso.Picasso
 
 /**
@@ -15,11 +16,12 @@ import com.squareup.picasso.Picasso
 
 class HistoryRecyclerAdapter(private var context: Context, private val historyList: List<History>) : RecyclerView.Adapter<HistoryRecyclerAdapter.mViewHolder>() {
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): mViewHolder {
         val view = LayoutInflater.from(context)
                 .inflate(R.layout.post_row, parent, false)
 
-        val returnView = mViewHolder(view, context)
+        val returnView = mViewHolder(view, context, viewType)
         return returnView
     }
 
@@ -42,7 +44,7 @@ class HistoryRecyclerAdapter(private var context: Context, private val historyLi
         return historyList.size
     }
 
-    inner class mViewHolder(view: View, ctx: Context) : RecyclerView.ViewHolder(view) {
+    inner class mViewHolder(view: View, ctx: Context, viewType: Int) : RecyclerView.ViewHolder(view) {
         var historyTitle: TextView
         var desc: TextView
         var timeStamp: TextView
@@ -58,7 +60,6 @@ class HistoryRecyclerAdapter(private var context: Context, private val historyLi
             location = view.findViewById<View>(R.id.postLocationList) as TextView
             image = view.findViewById<View>(R.id.postImageView) as ImageView
             userID = "test"
-
             view.setOnClickListener {
 
             }
