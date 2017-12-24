@@ -1,23 +1,21 @@
 package tabbedactivitytest.mobilesw.kau.time_travel2
 
 import android.content.Context
+import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.ExpandableListView
-import android.widget.LinearLayout
-import android.widget.ListView
-import android.widget.Toast
 import android.view.KeyEvent
+import android.widget.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
-import android.widget.TextView
+import com.google.firebase.database.*
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.setting_menu1.*
 import org.w3c.dom.Text
 
 
@@ -106,8 +104,14 @@ class SettingFragment : Fragment() {
         })
 
         //--------- setting sub menu 1 ----------//
-        val txtRadio1 = rootView.findViewById<LinearLayout>(R.id.clickable_menu)
+        val logoutBtn : LinearLayout = rootView.findViewById(R.id.logout)
+        logoutBtn.setOnClickListener {
+            mAuth.signOut()
+        }
 
+        //--------- setting sub menu 2 ----------//
+
+        //--------- setting sub menu 3 ----------//
 
         //--------- setting sub menu 4 ----------//
         expandableListView = rootView.findViewById(R.id.expandableListView)

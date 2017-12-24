@@ -9,6 +9,13 @@ import com.google.firebase.auth.FirebaseUser
 import android.util.Log
 import android.widget.EditText
 import android.content.Intent
+import android.support.v4.view.ViewCompat.setAlpha
+import android.graphics.drawable.Drawable
+import android.animation.AnimatorInflater
+import android.animation.AnimatorSet
+import android.view.animation.AnimationUtils
+import android.view.animation.Animation
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -39,6 +46,12 @@ class MainActivity : AppCompatActivity() {
         emailField = findViewById(R.id.login_email)
         passwordField = findViewById(R.id.login_password)
         mAuth = FirebaseAuth.getInstance()
+
+
+        val animTransRight = AnimationUtils.loadAnimation(this, R.anim.translate)
+        imageView.startAnimation(animTransRight)
+
+
         //로그인 이벤트
         loginButton.setOnClickListener {
             mAuth.signInWithEmailAndPassword(emailField.text.toString(), passwordField.text.toString())

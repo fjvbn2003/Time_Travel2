@@ -38,7 +38,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/button_create"
+        android:background="@drawable/input_outline"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,6 +49,7 @@
             android:id="@+id/Email_create"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/signup_outline1"
             android:hint="email"
             android:inputType="textEmailAddress" />
 
@@ -55,6 +57,7 @@
             android:id="@+id/name_create"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/signup_outline2"
             android:hint="name"
             android:inputType="textPersonName" />
 
@@ -63,6 +66,7 @@
             android:id="@+id/password_create"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/signup_outline2"
             android:hint="password"
             android:inputType="textPassword" />
 
@@ -70,21 +74,19 @@
             android:id="@+id/password2_create"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/signup_outline2"
             android:hint="password"
             android:inputType="textPassword" />
 
+
+        <Button
+            android:id="@+id/button_create"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/signup_outline3"
+            android:text="회원가입"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold" />
+
     </LinearLayout>
-
-    <Button
-        android:id="@+id/button_create"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="회원가입"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
-
 </android.support.constraint.ConstraintLayout>

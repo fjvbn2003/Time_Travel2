@@ -145,6 +145,36 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
+        android:background="@color/colorGray"
+        android:layout_marginLeft="16dp"/>
+
+    <LinearLayout
+        android:id="@+id/logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="로그아웃"
+            android:textSize="16sp"
+            android:padding="16dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text=">"
+            android:gravity="right"
+            android:padding="16dp"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
         android:background="@color/colorGray"/>
 
 </LinearLayout>
