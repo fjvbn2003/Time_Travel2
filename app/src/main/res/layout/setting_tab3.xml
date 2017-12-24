@@ -18,6 +18,18 @@
     </LinearLayout>
 
     <include
+        layout="@layout/setting_menu1"
+        android:id="@+id/sub1" />
+
+    <include
+        layout="@layout/setting_menu2"
+        android:id="@+id/sub2" />
+
+    <include
+        layout="@layout/setting_menu3"
+        android:id="@+id/sub3" />
+
+    <include
         layout="@layout/setting_menu4"
         android:id="@+id/sub4"/>
 
