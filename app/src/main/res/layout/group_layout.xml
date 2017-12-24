@@ -4,5 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center_vertical"
-    android:padding="16dp"
-    android:textSize="22sp" />
+    android:paddingLeft="35dp"
+    android:paddingBottom="16dp"
+    android:paddingTop="16dp"
+    android:text="text"
+    android:textSize="17sp" />

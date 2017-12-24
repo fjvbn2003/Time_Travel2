@@ -8,7 +8,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
@@ -21,12 +21,13 @@ import com.theartofdev.edmodo.cropper.CropImageView
 class CreateAccountActivity : AppCompatActivity() {
 
     lateinit var mAuth: FirebaseAuth
-    lateinit var registerButoon: Button
+    lateinit var registerButton: Button
     lateinit var emailField: EditText
+    lateinit var nameField: EditText
     lateinit var passwordField: EditText
     lateinit var mDatabaseReference: DatabaseReference
     lateinit var mDatabase: FirebaseDatabase
-    lateinit var mProfileImage: ImageButton
+    lateinit var mProfileImage: ImageView
     lateinit var mImageUri: Uri
     lateinit var mStorage : StorageReference
     val GALLERY_CODE:Int = 1
@@ -42,11 +43,12 @@ class CreateAccountActivity : AppCompatActivity() {
         mStorage = FirebaseStorage.getInstance().reference
         mProfileImage = findViewById(R.id.imageButton_Create)
         emailField = findViewById(R.id.Email_create)
+        nameField = findViewById(R.id.name_create)
         passwordField = findViewById(R.id.password_create)
-        registerButoon = findViewById(R.id.button_create)
+        registerButton = findViewById(R.id.button_create)
         mImageUri = Uri.EMPTY
         mAuth.signOut()
-        registerButoon.setOnClickListener {
+        registerButton.setOnClickListener {
             if(mImageUri == Uri.EMPTY){
                 Toast.makeText(this, "이미지를 추가해 주세요",Toast.LENGTH_LONG).show()
             }
@@ -61,6 +63,7 @@ class CreateAccountActivity : AppCompatActivity() {
                                     val newPost: DatabaseReference = mDatabaseReference.push()
                                     val dataToSave = HashMap<String,String>()
                                     dataToSave.put("userID", emailField.text.toString())
+                                    dataToSave.put("userName", nameField.text.toString())
                                     dataToSave.put("password",passwordField.text.toString())
                                     dataToSave.put("image",downLoadUrl.toString())
                                     newPost.setValue(dataToSave)

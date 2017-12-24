@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var registerButoon: Button
     lateinit var emailField: EditText
     lateinit var passwordField: EditText
+
     // 로그인 되어있는지 확인
     override fun onStart() {
         super.onStart()

@@ -9,18 +9,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="도움말"
+        android:text="친구관리"
         android:textStyle="bold"
         android:textSize="18sp"
         android:textColor="@color/colorWhite"
         android:gravity="center"
         android:background="@color/colorPrimary"/>
-
-    <ExpandableListView
-        android:id="@+id/expandableListView"
-        android:paddingLeft="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </ExpandableListView>
 
 </LinearLayout>
