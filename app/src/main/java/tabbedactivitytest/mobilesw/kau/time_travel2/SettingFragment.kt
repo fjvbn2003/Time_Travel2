@@ -138,10 +138,15 @@ class SettingFragment : Fragment() {
         //--------- setting sub menu 2 ----------//
         val friendsEdit : EditText = rootView.findViewById<EditText>(R.id.friendsEdit)
         val friendsBtn : Button = rootView.findViewById(R.id.friendBtn)
-        val friendsList : SwipeMenuListView = rootView.findViewById(R.id.friendsList)
+        val friendsList : ListView = rootView.findViewById(R.id.friendsList)
+
+        friendsBtn.setOnClickListener {
+            
+
+        }
+
 
         var list : ArrayList<String> = ArrayList()
-
 
         val adapter : ArrayAdapter<String> = ArrayAdapter(context, android.R.layout.simple_list_item_1, list)
         friendsList.adapter = adapter
