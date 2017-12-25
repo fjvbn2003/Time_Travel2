@@ -32,7 +32,6 @@ class HistoryRecyclerAdapter(private var context: Context, private val historyLi
         holder.desc.text = history.desc
         holder.location.text = history.location
         holder.timeStamp.text = history.timeStamp
-        holder.timeStamp.text = "17/12/09"
         imageUrl = history.image
         Picasso.with(context)
                 .load(imageUrl)

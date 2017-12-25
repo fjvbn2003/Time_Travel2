@@ -61,8 +61,10 @@ class AddPostActivity : AppCompatActivity() {
             override fun onLocationChanged(location: Location?) {
                 if(location !=null) {
                     var myLocation = LatLng(location.latitude, location.longitude)
+/*
                     Log.d("My Location", myLocation.toString())
                     Toast.makeText(this@AddPostActivity, "location" + myLocation.toString(), Toast.LENGTH_LONG).show()
+*/
                     var geogoder: Geocoder = Geocoder(applicationContext, Locale.getDefault())
                     try {
                         var addressList: List<Address> = geogoder.getFromLocation(location.latitude, location.longitude, 1)
@@ -158,7 +160,17 @@ class AddPostActivity : AppCompatActivity() {
                 dataToSave.put("historyTitle",title)
                 dataToSave.put("desc", desc)
                 dataToSave.put("location",location)
-                dataToSave.put("timeStamp",java.lang.System.currentTimeMillis().toString())
+                var timeStamp = ""
+                val tz = TimeZone.getTimeZone("Asia/Seoul")
+                val gc = GregorianCalendar(tz)
+                var year = gc.get(GregorianCalendar.YEAR).toString()
+                var month = gc.get(GregorianCalendar.MONTH).toString()
+                var day = gc.get(GregorianCalendar.DATE).toString()
+                var hour= gc.get(GregorianCalendar.HOUR).toString()
+                var min = gc.get(GregorianCalendar.MINUTE).toString()
+
+                timeStamp = year+'/'+month+'/'+day+'/'+hour+"시"+min+"분"
+                dataToSave.put("timeStamp",timeStamp)
                 dataToSave.put("image",downLoadUrl.toString())
 
                 newPost.setValue(dataToSave)
