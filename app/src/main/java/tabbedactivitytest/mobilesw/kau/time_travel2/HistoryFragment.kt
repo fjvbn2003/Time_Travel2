@@ -56,15 +56,18 @@ class HistoryFragment : Fragment() {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 for(data in dataSnapshot.children){
-                    Log.i("data", data.toString())
-                    val history = History()
-                    history.userID = data.child("userID").value.toString()
-                    history.historyTitle = data.child("historyTitle").value.toString()
-                    history.desc = data.child("desc").value.toString()
-                    history.location = data.child("location").value.toString()
-                    history.timeStamp = data.child("timeStamp").value.toString()
-                    history.image = data.child("image").value.toString()
-                    historyList.add(0,history)
+                    if(data.child("userID").value.toString() == mUser!!.email.toString()){
+                        Log.i("data", data.toString())
+                        val history = History()
+                        history.userID = data.child("userID").value.toString()
+                        history.historyTitle = data.child("historyTitle").value.toString()
+                        history.desc = data.child("desc").value.toString()
+                        history.location = data.child("location").value.toString()
+                        history.timeStamp = data.child("timeStamp").value.toString()
+                        history.image = data.child("image").value.toString()
+                        historyList.add(0,history)
+                    }
+
                 }
                 mrecyclerView = rootView.findViewById(R.id.recyclerView)
                 mrecyclerView.setHasFixedSize(true)
