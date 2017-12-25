@@ -255,8 +255,13 @@ class SettingFragment : Fragment() {
 
 
         //--------- setting sub menu 3 ----------//
+        val optionSwitch : Switch = rootView.findViewById(R.id.optSwitch)
+        var switchState : Boolean = optionSwitch.isChecked
+        if (switchState) {
 
+        } else {
 
+        }
 
 
         //--------- setting sub menu 4 ----------//
