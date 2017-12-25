@@ -106,7 +106,9 @@ class SettingFragment : Fragment() {
         //--------- setting sub menu 1 ----------//
         val logoutBtn : LinearLayout = rootView.findViewById(R.id.logout)
         logoutBtn.setOnClickListener {
-            mAuth.signOut()
+            Toast.makeText(context, "로그아웃", Toast.LENGTH_SHORT).show()
+            FirebaseAuth.getInstance().signOut()
+            activity?.finish()
         }
 
         //--------- setting sub menu 2 ----------//

@@ -11,6 +11,7 @@ import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.view.Menu
 import android.view.MenuItem
+import android.view.Window
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
@@ -34,7 +35,9 @@ class TabbedActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE)
         setContentView(R.layout.activity_tabbed)
+
         mAuth = FirebaseAuth.getInstance()
         mUser = mAuth.currentUser
         val floatButton = findViewById<FloatingActionButton>(R.id.floatingButton)
@@ -42,7 +45,7 @@ class TabbedActivity : AppCompatActivity() {
             val intent = Intent(this, AddPostActivity::class.java)
             startActivity(intent)
         }
-        setSupportActionBar(toolbar)
+
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = SectionsPagerAdapter(supportFragmentManager)
