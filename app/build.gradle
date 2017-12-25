@@ -43,7 +43,7 @@ dependencies {
     compile 'com.theartofdev.edmodo:android-image-cropper:2.6.+'
     compile 'com.github.vipulasri:timelineview:1.0.5'
     compile 'com.android.support:multidex:1.0.1'
-
+    compile 'com.baoyz.swipemenulistview:library:1.3.0'
 }
 
 

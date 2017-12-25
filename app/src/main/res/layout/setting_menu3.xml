@@ -16,4 +16,10 @@
         android:gravity="center"
         android:background="@color/colorPrimary"/>
 
+    <Switch
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="히스토리 공개 게시" />
+
 </LinearLayout>

@@ -17,6 +17,14 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
+import android.support.annotation.NonNull
+import com.google.android.gms.tasks.OnFailureListener
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.UserProfileChangeRequest
+import com.google.firebase.auth.FirebaseUser
+
+
 
 class CreateAccountActivity : AppCompatActivity() {
 
@@ -66,6 +74,9 @@ class CreateAccountActivity : AppCompatActivity() {
                                     dataToSave.put("userName", nameField.text.toString())
                                     dataToSave.put("password",passwordField.text.toString())
                                     dataToSave.put("image",downLoadUrl.toString())
+                                    if (downLoadUrl != null) {
+                                        setUserProfile(downLoadUrl)
+                                    }
                                     newPost.setValue(dataToSave)
 
                                     // Sign in success, update UI with the signed-in user's information
@@ -77,7 +88,7 @@ class CreateAccountActivity : AppCompatActivity() {
                             } else {
                                 // If sign in fails, display a message to the user.
                                 Log.i( "Register failure", task.exception.toString())
-                                Toast.makeText(this,"회원가입 실패", Toast.LENGTH_LONG).show()
+                                Toast.makeText(this,"이미 존재하는 이메일입니다.", Toast.LENGTH_LONG).show()
 
                             }
 
@@ -95,6 +106,28 @@ class CreateAccountActivity : AppCompatActivity() {
 
 
     }
+
+    private fun setUserProfile(downloadUrl: Uri) {
+        val user = mAuth.currentUser
+
+        if (user != null) {
+            val profileUpdates = UserProfileChangeRequest.Builder()
+                    .setDisplayName(nameField.text.toString())
+                    .setPhotoUri(downloadUrl)
+                    .build()
+            user.updateProfile(profileUpdates)
+                    .addOnCompleteListener(object : OnCompleteListener<Void> {
+                        override fun onComplete(task: Task<Void>) {
+                            if (task.isSuccessful) {
+
+                            }
+                        }
+                    }).addOnFailureListener { e ->
+                Toast.makeText(this, e.localizedMessage, Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if(requestCode == GALLERY_CODE && resultCode == Activity.RESULT_OK && data != null){

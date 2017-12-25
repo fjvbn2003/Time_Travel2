@@ -8,12 +8,53 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
         android:padding="10dp"
         android:text="친구관리"
-        android:textStyle="bold"
-        android:textSize="18sp"
         android:textColor="@color/colorWhite"
-        android:gravity="center"
-        android:background="@color/colorPrimary"/>
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:orientation="horizontal">
+
+
+        <EditText
+            android:id="@+id/friendsEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="10"
+            android:padding="5dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/input_outline"/>
+
+        <Button
+            android:id="@+id/friendBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:text="추가" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="10dp"
+        android:text="친구목록"/>
+
+    <ListView
+        android:id="@+id/friendsList"
+        android:layout_marginLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </ListView>
 
 </LinearLayout>

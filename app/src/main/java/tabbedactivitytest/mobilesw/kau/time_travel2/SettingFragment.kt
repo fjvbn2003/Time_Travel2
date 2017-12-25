@@ -11,12 +11,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.KeyEvent
 import android.widget.*
+import com.baoyz.swipemenulistview.SwipeMenuListView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.setting_menu1.*
 import org.w3c.dom.Text
+import android.R.drawable.ic_delete
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import com.baoyz.swipemenulistview.SwipeMenuItem
+import com.baoyz.swipemenulistview.SwipeMenu
+import com.baoyz.swipemenulistview.SwipeMenuCreator
+
+
 
 
 /**
@@ -104,6 +113,21 @@ class SettingFragment : Fragment() {
         })
 
         //--------- setting sub menu 1 ----------//
+        val userImg : ImageView = rootView.findViewById(R.id.accountImage)
+        val photoUrl : Uri? = mUser!!.photoUrl
+        Picasso.with(context).load(photoUrl).into(userImg)
+
+        val nameText1 : TextView = rootView.findViewById(R.id.accountName1)
+        val nameText2 : TextView = rootView.findViewById(R.id.accountName2)
+        val emailText1 : TextView = rootView.findViewById(R.id.accountEmail1)
+        val emailText2 : TextView = rootView.findViewById(R.id.accountEmail2)
+
+        nameText1.text = mUser!!.displayName.toString()
+        nameText2.text = mUser!!.displayName.toString()
+        emailText1.text = mUser!!.email.toString()
+        emailText2.text = mUser!!.email.toString()
+
+
         val logoutBtn : LinearLayout = rootView.findViewById(R.id.logout)
         logoutBtn.setOnClickListener {
             Toast.makeText(context, "로그아웃", Toast.LENGTH_SHORT).show()
@@ -112,8 +136,21 @@ class SettingFragment : Fragment() {
         }
 
         //--------- setting sub menu 2 ----------//
+        val friendsEdit : EditText = rootView.findViewById<EditText>(R.id.friendsEdit)
+        val friendsBtn : Button = rootView.findViewById(R.id.friendBtn)
+        val friendsList : SwipeMenuListView = rootView.findViewById(R.id.friendsList)
+
+        var list : ArrayList<String> = ArrayList()
+
+
+        val adapter : ArrayAdapter<String> = ArrayAdapter(context, android.R.layout.simple_list_item_1, list)
+        friendsList.adapter = adapter
+
 
         //--------- setting sub menu 3 ----------//
+
+
+
 
         //--------- setting sub menu 4 ----------//
         expandableListView = rootView.findViewById(R.id.expandableListView)
