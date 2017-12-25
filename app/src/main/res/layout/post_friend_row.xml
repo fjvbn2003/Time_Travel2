@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="15dp"
+    app:cardCornerRadius="5dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+                <ImageView
+                    android:id="@+id/friend_profile_image"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+                <TextView
+                    android:id="@+id/friend_email_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+            <ImageView
+                android:id="@+id/postImageView"
+                android:adjustViewBounds="true"
+                android:cropToPadding="false"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/add_btn"
+                android:layout_width="match_parent"
+                android:layout_height="250dp" />
+            <TextView
+                android:id="@+id/postTitleList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="15dp"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:text="post title"
+                />
+            <TextView
+                android:id="@+id/postTextList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:textSize="15dp"
+                android:text="post text"
+                />
+            <TextView
+                android:id="@+id/postTimeList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:textStyle="italic"
+                android:textSize="15dp"
+                android:text="post time"
+                />
+            <TextView
+                android:id="@+id/postLocationList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:text="post location"
+                android:gravity="center"
+                />
+
+        </LinearLayout>
+
+
+
+</android.support.v7.widget.CardView>

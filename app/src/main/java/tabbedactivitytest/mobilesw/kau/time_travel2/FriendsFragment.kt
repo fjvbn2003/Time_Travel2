@@ -24,8 +24,8 @@ class FriendsFragment : Fragment() {
     var mUser : FirebaseUser? = null
     lateinit var mLayoutManager: RecyclerView.LayoutManager
     lateinit var mrecyclerView : RecyclerView
-    lateinit var historyRecyclerAdapter : HistoryRecyclerAdapter
-    var historyList = ArrayList<History>()
+    lateinit var historyRecyclerAdapter : FriendHistoryRecyclerAdapter
+    var historyList = ArrayList<FriendHistory>()
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
@@ -52,7 +52,8 @@ class FriendsFragment : Fragment() {
                 for(data in dataSnapshot.children){
                     if(data.child("userID").value.toString() != mUser!!.email.toString()){
                         Log.i("data", data.toString())
-                        val history = History()
+                        val history = FriendHistory()
+                        history.profile_image = data.child("userID").value.toString()
                         history.userID = data.child("userID").value.toString()
                         history.historyTitle = data.child("historyTitle").value.toString()
                         history.desc = data.child("desc").value.toString()
@@ -67,12 +68,11 @@ class FriendsFragment : Fragment() {
                 val context = activity as Context
                 mLayoutManager = LinearLayoutManager(context)
                 mrecyclerView.layoutManager = mLayoutManager
-                historyRecyclerAdapter = HistoryRecyclerAdapter(context, historyList)
+                historyRecyclerAdapter = FriendHistoryRecyclerAdapter(context, historyList)
                 mrecyclerView.adapter = historyRecyclerAdapter
                 historyRecyclerAdapter.notifyDataSetChanged()
                 Log.i("fragmentLifeCycle","onCreateView")
                 // Read from the database
-
             }
             override fun onCancelled(error: DatabaseError) {
                 // Failed to read value
