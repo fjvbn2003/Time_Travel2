@@ -68,16 +68,15 @@ class CreateAccountActivity : AppCompatActivity() {
                                 filePath.putFile(mImageUri).addOnSuccessListener {
                                     taskSnapshot ->
                                     val downLoadUrl :Uri? = taskSnapshot.downloadUrl
-                                    val newPost: DatabaseReference = mDatabaseReference.push()
                                     val dataToSave = HashMap<String,String>()
                                     dataToSave.put("userID", emailField.text.toString())
                                     dataToSave.put("userName", nameField.text.toString())
                                     dataToSave.put("password",passwordField.text.toString())
                                     dataToSave.put("image",downLoadUrl.toString())
+                                    mDatabase.reference.child("MUser").child(encodeString(emailField.text.toString())).setValue(dataToSave)
                                     if (downLoadUrl != null) {
                                         setUserProfile(downLoadUrl)
                                     }
-                                    newPost.setValue(dataToSave)
 
                                     // Sign in success, update UI with the signed-in user's information
                                     Toast.makeText(this,"회원가입을 성공하였습니다.", Toast.LENGTH_SHORT).show()
@@ -105,6 +104,14 @@ class CreateAccountActivity : AppCompatActivity() {
 
 
 
+    }
+
+    private fun encodeString(string: String): String {
+        return string.replace(".", ",")
+    }
+
+    private fun decodeString(string: String): String {
+        return string.replace(",", ".")
     }
 
     private fun setUserProfile(downloadUrl: Uri) {

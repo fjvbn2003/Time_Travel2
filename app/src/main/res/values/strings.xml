@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Time_Travel2</string>
+    <string name="app_name">TimeTravel</string>
     <string name="title_activity_tabbed">TabbedActivity</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>

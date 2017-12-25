@@ -33,4 +33,8 @@
         layout="@layout/setting_menu4"
         android:id="@+id/sub4"/>
 
+    <include
+        layout="@layout/setting_menu1_2"
+        android:id="@+id/sub1_2"/>
+
 </android.support.constraint.ConstraintLayout>

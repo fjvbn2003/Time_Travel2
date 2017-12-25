@@ -40,7 +40,8 @@
                 android:id="@+id/accountName1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
+                android:paddingLeft="10dp"
+                android:layout_marginBottom="5dp"
                 android:textSize="18sp"
                 android:text="name"/>
 
@@ -129,7 +130,7 @@
                 android:layout_marginLeft="16dp"/>
 
             <LinearLayout
-                android:id="@+id/clickable_menu"
+                android:id="@+id/accountUpdateBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="true"
