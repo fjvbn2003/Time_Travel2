@@ -88,7 +88,7 @@ class SettingFragment : Fragment() {
         val rootView = inflater.inflate(R.layout.setting_tab3,container,false)
         val view = rootView.findViewById<LinearLayout>(R.id.list_main)
         val view1 : LinearLayout = rootView.findViewById(R.id.sub1)
-        val view1_2 : ConstraintLayout = rootView.findViewById(R.id.sub1_2)
+        val view1_2 : LinearLayout = rootView.findViewById(R.id.sub1_2)
         val view2 : LinearLayout = rootView.findViewById(R.id.sub2)
         val view3 : LinearLayout = rootView.findViewById(R.id.sub3)
         val view4 : LinearLayout = rootView.findViewById(R.id.sub4)
@@ -249,7 +249,7 @@ class SettingFragment : Fragment() {
             val friendID = friendsEdit.text.toString()
             friendsEdit.text = null
 
-            addFriend(friendID)
+            validate(friendID)
 
         }
 
@@ -312,6 +312,25 @@ class SettingFragment : Fragment() {
         ft.detach(this).attach(this).commit()
     }
 
+    private fun validate(friendID: String) {
+        val responseListener = Response.Listener<String> { response ->
+            try {
+                val jsonResponse = JSONObject(response)
+                val success = jsonResponse.getBoolean("success")
+                if (success) {
+                    addFriend(friendID)
+                } else {
+                    Toast.makeText(activity, "가입하지 않은 유저입니다.", Toast.LENGTH_SHORT).show()
+                }
+            } catch (e: JSONException) {
+                e.printStackTrace()
+            }
+        }
+        val validateRequest = ValidateRequest(friendID, responseListener)
+        val queue = Volley.newRequestQueue(context)
+        queue.add(validateRequest)
+    }
+
     private fun addFriend(friendID: String) {
         val responseListener = Response.Listener<String> { response ->
             try {
@@ -331,6 +350,21 @@ class SettingFragment : Fragment() {
         val addRequest = AddFriendRequest(mUser!!.email.toString(), friendID, responseListener)
         val queue = Volley.newRequestQueue(context)
         queue.add(addRequest)
+    }
+
+    private fun getFriend(userID: String) {
+        val responseListener = Response.Listener<String> { response ->
+            try {
+                val jsonResponse = JSONObject(response)
+                val friendsList = jsonResponse.getJSONArray("friendID")
+                Toast.makeText(activity, friendsList.toString(), Toast.LENGTH_SHORT).show()
+            } catch (e: JSONException) {
+                e.printStackTrace()
+            }
+        }
+        val delRequest = GetFriendListRequest(userID, responseListener)
+        val queue = Volley.newRequestQueue(context)
+        queue.add(delRequest)
     }
 
     private fun delFriend(friendID: String) {

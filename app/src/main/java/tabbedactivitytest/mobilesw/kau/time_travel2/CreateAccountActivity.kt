@@ -1,6 +1,7 @@
 package tabbedactivitytest.mobilesw.kau.time_travel2
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Intent
 import android.net.Uri
 import android.support.v7.app.AppCompatActivity
@@ -18,12 +19,15 @@ import com.google.firebase.storage.StorageReference
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
 import android.support.annotation.NonNull
+import com.android.volley.Response
+import com.android.volley.toolbox.Volley
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.auth.FirebaseUser
-
+import org.json.JSONException
+import org.json.JSONObject
 
 
 class CreateAccountActivity : AppCompatActivity() {
@@ -77,6 +81,24 @@ class CreateAccountActivity : AppCompatActivity() {
                                     if (downLoadUrl != null) {
                                         setUserProfile(downLoadUrl)
                                     }
+
+                                    val responseListener = Response.Listener<String> { response ->
+                                        try {
+                                            val jsonResponse = JSONObject(response)
+                                            val success = jsonResponse.getBoolean("success")
+                                            if (success) {
+
+                                            } else {
+
+                                            }
+                                        } catch (e: JSONException) {
+                                            e.printStackTrace()
+                                        }
+                                    }
+
+                                    val registerRequest = RegisterRequest(emailField.text.toString(), responseListener)
+                                    val queue = Volley.newRequestQueue(this)
+                                    queue.add(registerRequest)
 
                                     // Sign in success, update UI with the signed-in user's information
                                     Toast.makeText(this,"회원가입을 성공하였습니다.", Toast.LENGTH_SHORT).show()
