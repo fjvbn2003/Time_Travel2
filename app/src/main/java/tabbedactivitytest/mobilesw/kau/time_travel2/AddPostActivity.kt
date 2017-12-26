@@ -80,7 +80,7 @@ class AddPostActivity : AppCompatActivity() {
                             if (addressList[0].getSubAdminArea() != null) {
                                 fullAddress += addressList[0].subAdminArea + " "
                             }
-                            Toast.makeText(applicationContext, "Address+" + fullAddress, Toast.LENGTH_LONG).show();
+                            Toast.makeText(applicationContext, "Address+" + fullAddress, Toast.LENGTH_SHORT).show();
                             mLocation.setText(fullAddress)
                         } else {
                             Log.d("Address:", "Couldn't find Address");
@@ -92,7 +92,7 @@ class AddPostActivity : AppCompatActivity() {
                 }
                 else{
                     Log.d("My Location", "is null")
-                    Toast.makeText(this@AddPostActivity, "location is null" , Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@AddPostActivity, "location is null" , Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -124,13 +124,13 @@ class AddPostActivity : AppCompatActivity() {
             if(ContextCompat.checkSelfPermission(this,android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
                 ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),1)
             }else{
-                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,0f,locationListener)
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,5000,0f,locationListener)
             }
         }else{
             if(ContextCompat.checkSelfPermission(this,android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
                 ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),1)
             }else{
-                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,0f,locationListener)
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,5000,0f,locationListener)
 
             }
         }
@@ -184,7 +184,7 @@ class AddPostActivity : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if(grantResults.size >0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
             if(ContextCompat.checkSelfPermission(this,android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED)
-                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,0f,locationListener)
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,5000,0f,locationListener)
         }
     }
 
